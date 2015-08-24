@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>z.z.w</groupId>
+	<artifactId>project-module</artifactId>
+	<version>2015082412-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>project-module</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<!-- servlet -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>3.0-alpha-1</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- DB -->
+			<dependency>
+				<groupId>z.z.w</groupId>
+				<artifactId>dependency-db</artifactId>
+				<version>2015082412-SNAPSHOT</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- spring -->
+			<dependency>
+				<groupId>z.z.w</groupId>
+				<artifactId>dependency-spring</artifactId>
+				<version>2015082412-SNAPSHOT</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- LOGBACK -->
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>1.1.2</version>
+			</dependency>
+
+			<!-- JUNIT4 -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.3</version>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.8</version>
+					<configuration>
+						<skipTests>true</skipTests>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.2.1</version>
+					<configuration>
+						<descriptors>
+							<descriptor>src/main/assembly/assembly.xml</descriptor>
+						</descriptors>
+						<encoding>UTF-8</encoding>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>single</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- jetty:run -->
+				<plugin>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>maven-jetty-plugin</artifactId>
+					<version>6.1.10</version>
+					<configuration>
+						<scanIntervalSeconds>10</scanIntervalSeconds>
+						<connectors>
+							<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+								<port>8888</port>
+								<maxIdleTime>60000</maxIdleTime>
+							</connector>
+						</connectors>
+						<webAppConfig>
+							<contextPath>/</contextPath>
+						</webAppConfig>
+					</configuration>
+					<executions>
+						<execution>
+							<id>start-jetty</id>
+							<phase>pre-integration-test</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<scanIntervalSeconds>0</scanIntervalSeconds>
+								<daemon>true</daemon>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<!-- mvn deploy -->
+	<!-- <distributionManagement> -->
+	<!-- <repository> -->
+	<!-- <id>Releases</id> -->
+	<!-- <name>Nexus Release Repository</name> -->
+	<!-- <url>http://192.168.137.3:8888/nexus/content/repositories/releases/</url> -->
+	<!-- </repository> -->
+	<!-- <snapshotRepository> -->
+	<!-- <id>Snapshots</id> -->
+	<!-- <name>Nexus Snapshot Repository</name> -->
+	<!-- <url>http://192.168.137.3:8888/nexus/content/repositories/snapshots/</url> -->
+	<!-- </snapshotRepository> -->
+	<!-- </distributionManagement> -->
+
+	<modules>
+		<module>pro-base-test</module>
+		<module>pro-springmvc-mybatis-test</module>
+	</modules>
+
+</project>

@@ -1,0 +1,12 @@
+
+**/.metadata/
+**/.settings/
+**/target/
+**/*.classpath
+**/*.project
+**/*.class
+
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
