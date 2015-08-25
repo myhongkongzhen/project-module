@@ -26,6 +26,6 @@ public class BaseJUnitTest
 	@Test
 	public void test()
 	{
-		logger.debug( "This is test." );
+		logger.info( "This is test." );
 	}
 }
