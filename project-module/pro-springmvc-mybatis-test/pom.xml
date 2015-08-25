@@ -1,27 +1,48 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>z.z.w</groupId>
-    <artifactId>project-module</artifactId>
-    <version>2015082412-SNAPSHOT</version>
-  </parent>
-  <groupId>z.z.w</groupId>
-  <artifactId>pro-springmvc-mybatis-test</artifactId>
-  <version>2015082418-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <name>pro-springmvc-mybatis-test Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  <build>
-    <finalName>pro-springmvc-mybatis-test</finalName>
-  </build>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>z.z.w</groupId>
+		<artifactId>project-module</artifactId>
+		<version>2015082412-SNAPSHOT</version>
+	</parent>
+	<artifactId>pro-springmvc-mybatis-test</artifactId>
+	<version>2015082418-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>pro-springmvc-mybatis-test Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+
+		<!-- servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+
+		<!-- logback -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>pro-springmvc-mybatis-test</finalName>
+	</build>
 </project>
