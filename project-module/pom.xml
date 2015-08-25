@@ -44,20 +44,15 @@
 				<scope>import</scope>
 			</dependency>
 
-			<!-- LOGBACK -->
+			<!-- common -->
 			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-classic</artifactId>
-				<version>1.1.2</version>
+				<groupId>z.z.w</groupId>
+				<artifactId>dependency-common</artifactId>
+				<version>2015082514-SNAPSHOT</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 
-			<!-- JUNIT4 -->
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.11</version>
-				<scope>test</scope>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
