@@ -74,6 +74,12 @@
 			<artifactId>spring-test</artifactId>
 		</dependency>
 
+		<!-- common -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
 		<!-- logback -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
@@ -84,6 +90,7 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>pro-springmvc-mybatis-test</finalName>
