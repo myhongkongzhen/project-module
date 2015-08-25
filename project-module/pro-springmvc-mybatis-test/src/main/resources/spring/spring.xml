@@ -9,6 +9,6 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd
 
 	<import resource="spring-base.xml" />
 	<import resource="spring-task.xml" />
-	<import resource="spring-mybatis.xml" />
+	<!-- <import resource="spring-mybatis.xml" /> -->
 
 </beans>
