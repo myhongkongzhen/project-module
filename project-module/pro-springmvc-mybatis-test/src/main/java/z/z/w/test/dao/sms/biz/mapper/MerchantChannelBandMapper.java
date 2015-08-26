@@ -1,5 +1,7 @@
 package z.z.w.test.dao.sms.biz.mapper;
 
+import org.apache.ibatis.annotations.Param;
+
 /**************************************************************************
  * <pre>
  *     FileName: z.z.w.test.dao.sms.biz.mapper.MerchantChannelBandMapper.java
@@ -12,5 +14,5 @@ package z.z.w.test.dao.sms.biz.mapper;
  **************************************************************************/
 public interface MerchantChannelBandMapper
 {
-	String getChannelCodeByAccount( String merchantAccount );
+	String getChannelCodeByAccount( @Param( value = "merchantAccount" ) String merchantAccount );
 }

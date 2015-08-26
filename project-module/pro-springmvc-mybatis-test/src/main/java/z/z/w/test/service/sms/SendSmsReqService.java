@@ -53,9 +53,8 @@ public class SendSmsReqService
 		pv.setMerchantSmsSend( merchantSmsSend );
 		
 		String merchantAccount = "";
-		merchantChannelBandMapper.getChannelCodeByAccount( merchantAccount );
-		
-		logger.debug( "[{}].", pv.toString() );
+		String channelCode = merchantChannelBandMapper.getChannelCodeByAccount( merchantAccount );
+		logger.info( "[{}]--[{}]", channelCode, pv.toString() );
 		
 		SmsQueueCatch.addData( pv );
 	}

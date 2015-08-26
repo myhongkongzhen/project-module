@@ -2,18 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="z.z.w.test.dao.sms.biz.mapper.MerchantChannelBandMapper">
 
-	<select id="getChannelCodeByAccount" resultType="java.lang.String">
+	<select id="getChannelCodeByAccount" resultType="String">
 		SELECT
 		sms_channel.CHANNEL_CODE FROM MERCHANT_CHANNEL_BAND JOIN
 		sms_channel
 		ON
 		MERCHANT_CHANNEL_BAND.CHANNEL_CODE =
 		sms_channel.CHANNEL_CODE
-		<where>
-			<if test="merchantAccount != null">
-				AND MERCHANT_ACCOUNT not in (#{merchantAccount})
-			</if>
-		</where>
+<!-- 		<trim prefix="where" prefixOverrides="and |or"> -->
+<!-- 			<if test="merchantAccount != null"> -->
+<!-- 				MERCHANT_ACCOUNT not in (#{merchantAccount}) -->
+<!-- 			</if> -->
+<!-- 		</trim> -->
 		ORDER BY score
 		DESC,MERCHANT_ACCOUNT LIMIT 1
 	</select>
