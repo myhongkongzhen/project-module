@@ -1,19 +1,13 @@
 package z.z.w.test.service.sms;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.UUID;
 
-import javax.annotation.Resource;
-
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import z.z.w.test.cache.SmsQueueCatch;
-import z.z.w.test.dao.sms.biz.mapper.MerchantChannelBandMapper;
 import z.z.w.test.vo.MerchantSmsSend;
 import z.z.w.test.vo.ParamsVo;
 
@@ -31,8 +25,7 @@ import z.z.w.test.vo.ParamsVo;
 @Scope( value = "prototype" )
 public class SendSmsReqService
 {
-	private static final Logger			logger	= LoggerFactory.getLogger( SendSmsReqService.class );
-	private MerchantChannelBandMapper	merchantChannelBandMapper;
+	private static final Logger	logger	= LoggerFactory.getLogger( SendSmsReqService.class );
 	
 	/**
 	 * Create by : 2015年8月25日 下午12:07:02
@@ -42,41 +35,22 @@ public class SendSmsReqService
 		ParamsVo pv = new ParamsVo();
 		
 		String uid = UUID.randomUUID().toString().replaceAll( "-", "" );
-		pv.setMerchantAccount( uid );
-		pv.setMsgId( String.valueOf( ( long ) ( Math.random() * 10000 ) ) );
+		pv.setMerchantAccount( appKey );
+		pv.setMsgId( data );
 		
 		MerchantSmsSend merchantSmsSend = new MerchantSmsSend();
 		merchantSmsSend.setId( ( long ) ( Math.random() * 10000 ) );
 		merchantSmsSend.setMerchantAccount( pv.getMerchantAccount() );
-		merchantSmsSend.setSmsChannelCode( appKey );
+		merchantSmsSend.setSmsChannelCode( uid );
 		
 		String content = "您的验证码为：" + ( ( long ) ( Math.random() * 10000 ) ) + "。" + data;
 		merchantSmsSend.setSmsContent( content );
 		
 		pv.setMerchantSmsSend( merchantSmsSend );
 		
-		String merchantAccount = appKey;
-		List< String > channelCodes = Arrays.asList( StringUtils.splitByWholeSeparator( data, "," ) );
-		String channelCode = merchantChannelBandMapper.getChannelCodeByAccount( merchantAccount, channelCodes );
-		logger.info( "[{}]--[{}]", channelCode, pv.toString() );
+		logger.debug( "--[{}]", pv.toString() );
 		
 		SmsQueueCatch.addData( pv );
 	}
 	
-	/**
-	 * @return the merchantChannelBandMapper
-	 */
-	public MerchantChannelBandMapper getMerchantChannelBandMapper()
-	{
-		return merchantChannelBandMapper;
-	}
-	
-	/**
-	 * @param merchantChannelBandMapper the merchantChannelBandMapper to set
-	 */
-	@Resource
-	public void setMerchantChannelBandMapper( MerchantChannelBandMapper merchantChannelBandMapper )
-	{
-		this.merchantChannelBandMapper = merchantChannelBandMapper;
-	}
 }

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import z.z.w.test.cache.SmsQueueCatch;
 import z.z.w.test.service.sms.SendSmsReqService;
 
 /**************************************************************************
@@ -45,9 +44,8 @@ public class SendSmsReqController
 		try
 		{
 //			data = StringUtils.substring( UUID.randomUUID().toString(), 20 );
-			logger.info( "[{}][{}]--Request :[{}]-[{}].", new Object[ ] { this, sendSmsReqService, appKey, data } );
+			logger.debug( "[{}][{}]--Request :[{}]-[{}].", new Object[ ] { this, sendSmsReqService, appKey, data } );
 			sendSmsReqService.updateSmsInfos( appKey, data );
-			logger.info( "Queue size : [{}].", SmsQueueCatch.getSize() );
 		}
 		catch ( Exception e )
 		{
