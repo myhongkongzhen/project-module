@@ -52,7 +52,7 @@ public class SendSmsReqService
 		
 		pv.setMerchantSmsSend( merchantSmsSend );
 		
-		String merchantAccount = "";
+		String merchantAccount = data;
 		String channelCode = merchantChannelBandMapper.getChannelCodeByAccount( merchantAccount );
 		logger.info( "[{}]--[{}]", channelCode, pv.toString() );
 		

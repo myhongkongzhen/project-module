@@ -9,11 +9,10 @@
 		ON
 		MERCHANT_CHANNEL_BAND.CHANNEL_CODE =
 		sms_channel.CHANNEL_CODE
-<!-- 		<trim prefix="where" prefixOverrides="and |or"> -->
-<!-- 			<if test="merchantAccount != null"> -->
-<!-- 				MERCHANT_ACCOUNT not in (#{merchantAccount}) -->
-<!-- 			</if> -->
-<!-- 		</trim> -->
+		WHERE 1 = 1
+		<if test="merchantAccount != null">
+			AND MERCHANT_ACCOUNT not in (#{merchantAccount})
+		</if>
 		ORDER BY score
 		DESC,MERCHANT_ACCOUNT LIMIT 1
 	</select>

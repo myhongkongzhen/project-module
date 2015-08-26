@@ -48,7 +48,7 @@ public class SendSmsReqController
 		try
 		{
 			appKey = StringUtils.substring( UUID.randomUUID().toString(), 26 );
-			data = StringUtils.substring( UUID.randomUUID().toString(), 20 );
+//			data = StringUtils.substring( UUID.randomUUID().toString(), 20 );
 			logger.info( "[{}][{}]--Request :[{}]-[{}].", new Object[ ] { this, sendSmsReqService, appKey, data } );
 			sendSmsReqService.updateSmsInfos( appKey, data );
 			logger.info( "Queue size : [{}].", SmsQueueCatch.getSize() );
