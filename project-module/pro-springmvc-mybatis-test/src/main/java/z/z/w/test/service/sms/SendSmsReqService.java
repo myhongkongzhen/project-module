@@ -1,9 +1,12 @@
 package z.z.w.test.service.sms;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
@@ -52,8 +55,9 @@ public class SendSmsReqService
 		
 		pv.setMerchantSmsSend( merchantSmsSend );
 		
-		String merchantAccount = data;
-		String channelCode = merchantChannelBandMapper.getChannelCodeByAccount( merchantAccount );
+		String merchantAccount = appKey;
+		List< String > channelCodes = Arrays.asList( StringUtils.splitByWholeSeparator( data, "," ) );
+		String channelCode = merchantChannelBandMapper.getChannelCodeByAccount( merchantAccount, channelCodes );
 		logger.info( "[{}]--[{}]", channelCode, pv.toString() );
 		
 		SmsQueueCatch.addData( pv );
