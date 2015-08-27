@@ -18,12 +18,11 @@
 	<dependencyManagement>
 		<dependencies>
 
-			<!-- servlet -->
+			<!-- 工具包 -->
 			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>servlet-api</artifactId>
-				<version>3.0-alpha-1</version>
-				<scope>provided</scope>
+				<groupId>z.z.w</groupId>
+				<artifactId>pro-common</artifactId>
+				<version>2015082710-SNAPSHOT</version>
 			</dependency>
 
 			<!-- DB -->
@@ -154,6 +153,7 @@
 	<modules>
 		<module>pro-base-test</module>
 		<module>pro-springmvc-mybatis-test</module>
+		<module>pro-common</module>
 	</modules>
 
 </project>
