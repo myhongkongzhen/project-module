@@ -17,12 +17,11 @@
 	<dependencyManagement>
 		<dependencies>
 
-			<!-- JUNIT4 -->
+			<!-- http client -->
 			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.11</version>
-				<scope>test</scope>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>4.3.6</version>
 			</dependency>
 
 			<!-- JSON -->
@@ -43,6 +42,14 @@
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-classic</artifactId>
 				<version>1.1.2</version>
+			</dependency>
+
+			<!-- JUNIT4 -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+				<scope>test</scope>
 			</dependency>
 
 		</dependencies>
