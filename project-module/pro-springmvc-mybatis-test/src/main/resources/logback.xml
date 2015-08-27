@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
 	<property name="ErrorStart"
@@ -19,10 +19,11 @@
 			<maxFileSize>80MB</maxFileSize>
 		</triggeringPolicy>
 		<encoder>
-			<pattern>[%d{yyyy-MM-dd HH:mm:ss}][%5level] %m %n</pattern>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss}]%5level - %m %n</pattern>
 		</encoder>
 	</appender>
 
+	<!-- 文件記錄錯誤日誌 ERROR 簡單記錄 -->
 	<appender name="errorFile"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>target/logs/errorFile.log</file>
@@ -41,21 +42,21 @@
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
 			<level>ERROR</level>
 			<onMatch>ACCEPT</onMatch>
-			<onMismatch>DENY</onMismatch>
+			<onMismatch>DENY</onMismatch>   
 		</filter>
 	</appender>
 
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
 		<layout class="ch.qos.logback.classic.PatternLayout">
-			<pattern>[%d{HH:mm:ss}][%5level]-%m [%logger:%L]-[%t]%n%n
-			</pattern>
+			<pattern>[%d{HH:mm:ss}][%5level]-【%m】[%logger:%L]-[%t]%n%n</pattern>
 		</layout>
 	</appender>
-
-	<logger name="z.z.w" level="info" />
+	
+	<logger name="z.z.w" level="debug"/>
+<!-- 	<logger name="org.hibernate.tool.hbm2ddl" level="info"/> -->
 	<!-- mybatis sql 日誌 -->
 <!-- 	<logger name="z.z.w.test.dao" level="debug" /> -->
-
+ 
 	<root level="error">
 		<appender-ref ref="commonFile" />
 		<appender-ref ref="errorFile" />

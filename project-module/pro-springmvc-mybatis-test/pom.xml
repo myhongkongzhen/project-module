@@ -14,22 +14,6 @@
 	<name>pro-springmvc-mybatis-test Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-		<!-- jackson -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-		</dependency>
-
-		<!-- FILE UPLOAD -->
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-		</dependency>
 
 		<!-- druid -->
 		<dependency>
@@ -55,7 +39,7 @@
 			<artifactId>mybatis-spring</artifactId>
 		</dependency>
 
-		<!-- spring3 -->
+		<!-- spring -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
@@ -69,23 +53,29 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
 
-		<!-- common -->
 		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
 		</dependency>
 
-		<!-- logback -->
 		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
 		</dependency>
 
+		<!-- 工具包 -->
+		<dependency>
+			<groupId>z.z.w</groupId>
+			<artifactId>pro-common</artifactId>
+		</dependency>
+
+		<!-- JUNIT4 -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
