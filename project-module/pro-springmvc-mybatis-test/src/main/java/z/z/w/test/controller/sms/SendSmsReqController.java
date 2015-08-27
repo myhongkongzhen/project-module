@@ -33,7 +33,7 @@ public class SendSmsReqController
 	private SendSmsReqService	sendSmsReqService;
 	
 	/**
-	 * http://localhost:8888/smscc/single/jflsdjfkldsjflkdsj.zzw?data=errjwelr
+	 * http://localhost:8888/smscc/single/thomas.zzw?data=errjwelr
 	 * 
 	 * Create by : 2015年8月25日 下午12:01:28
 	 */
