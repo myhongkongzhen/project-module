@@ -2,6 +2,10 @@ package z.z.w.util.http;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.net.UnknownHostException;
 import java.nio.charset.CodingErrorAction;
 
@@ -96,11 +100,40 @@ public class HttpClientUtil
 		}
 	}
 	
-	public static String httpPost( String url ) throws Exception
+	/**
+	 * 請求URL中包含特殊字符如:|使用此API發送請求
+	 * Create by : 2015年8月27日 下午4:45:32
+	 */
+	public static String httpPostParticular( String httpUrl ) throws Exception
 	{
 		try
 		{
-			HttpPost httpPost = new HttpPost( url );
+			URL url = new URL( httpUrl );
+			URI uri = new URI( url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), null );
+			HttpPost httpPost = new HttpPost( uri );
+			return doPost( httpPost );
+		}
+		catch ( MalformedURLException e )
+		{
+			logger.error( "HttpClientUtil error : [{}].", e.getMessage(), e );
+			throw e;
+		}
+		catch ( URISyntaxException e )
+		{
+			logger.error( "HttpClientUtil error : [{}].", e.getMessage(), e );
+			throw e;
+		}
+		catch ( Exception e )
+		{
+			logger.error( "HttpClientUtil error : [{}].", e.getMessage(), e );
+			throw e;
+		}
+	}
+	
+	private static String doPost( HttpPost httpPost ) throws Exception
+	{
+		try
+		{
 			httpPost.setConfig( config );
 			httpPost.addHeader( HTTP.CONTENT_TYPE, "application/json" );
 			httpPost.setHeader( "Accept-Charset", "GB2312,utf-8;q=0.7,*;q=0.7" );
@@ -110,7 +143,6 @@ public class HttpClientUtil
 			httpPost.setHeader( HTTP.USER_AGENT, "Mozilla/5.0 (Windows NT 6.1; rv:6.0.2) Gecko/20100101 Firefox/6.0.2" );
 			
 			CloseableHttpResponse response = httpClient.execute( httpPost, HttpClientContext.create() );
-			
 			try
 			{
 				HttpEntity entity = response.getEntity();
@@ -141,7 +173,26 @@ public class HttpClientUtil
 			logger.error( "HttpClientUtil error : [{}].", e.getMessage(), e );
 			throw e;
 		}
+	}
+	
+	public static String httpPost( String url ) throws Exception
+	{
+		try
+		{
+			HttpPost httpPost = new HttpPost( url );
+			return doPost( httpPost );
+		}
+		catch ( Exception e )
+		{
+			logger.error( "HttpClientUtil error : [{}].", e.getMessage(), e );
+			throw e;
+		}
 		
+	}
+	
+	private HttpClientUtil()
+	{
+		super();
 	}
 	
 }
