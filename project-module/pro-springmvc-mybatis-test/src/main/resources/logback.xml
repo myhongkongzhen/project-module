@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
 <configuration>
 
 	<property name="ErrorStart"
@@ -54,6 +53,8 @@
 	</appender>
 
 	<logger name="z.z.w" level="info" />
+	<!-- mybatis sql 日誌 -->
+<!-- 	<logger name="z.z.w.test.dao" level="debug" /> -->
 
 	<root level="error">
 		<appender-ref ref="commonFile" />

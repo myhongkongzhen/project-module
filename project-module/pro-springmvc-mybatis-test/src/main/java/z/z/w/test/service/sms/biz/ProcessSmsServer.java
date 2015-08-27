@@ -18,7 +18,7 @@ import org.springframework.web.context.WebApplicationContext;
  * </pre>
  **************************************************************************/
 @Service
-public class ProcessSmsService
+public class ProcessSmsServer
 {
 	private ThreadPoolTaskExecutor	threadPoolTaskExecutor;
 	private WebApplicationContext	webApplicationContext;

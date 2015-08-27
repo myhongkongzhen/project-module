@@ -1,11 +1,8 @@
 package z.z.w.test.controller.sms;
 
-import java.util.UUID;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
@@ -14,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import z.z.w.test.cache.SmsQueueCatch;
 import z.z.w.test.service.sms.SendSmsReqService;
 
 /**************************************************************************
@@ -37,7 +33,7 @@ public class SendSmsReqController
 	private SendSmsReqService	sendSmsReqService;
 	
 	/**
-	 * http://localhost:8888/smscc/single/jflsdjfkldsjflkdsj.zzw?data=errjwelr
+	 * http://localhost:8888/smscc/single/thomas.zzw?data=errjwelr
 	 * 
 	 * Create by : 2015年8月25日 下午12:01:28
 	 */
@@ -47,11 +43,9 @@ public class SendSmsReqController
 	{
 		try
 		{
-			appKey = StringUtils.substring( UUID.randomUUID().toString(), 26 );
-			data = StringUtils.substring( UUID.randomUUID().toString(), 20 );
-			logger.info( "[{}][{}]--Request :[{}]-[{}].", new Object[ ] { this, sendSmsReqService, appKey, data } );
+//			data = StringUtils.substring( UUID.randomUUID().toString(), 20 );
+			logger.debug( "[{}][{}]--Request :[{}]-[{}].", new Object[ ] { this, sendSmsReqService, appKey, data } );
 			sendSmsReqService.updateSmsInfos( appKey, data );
-			logger.info( "Queue size : [{}].", SmsQueueCatch.getSize() );
 		}
 		catch ( Exception e )
 		{

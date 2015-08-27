@@ -1,5 +1,8 @@
 package z.z.w.test.vo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**************************************************************************
  * <pre>
  *     FileName: z.z.w.test.vo.ParamsVo.java
@@ -17,6 +20,9 @@ public class ParamsVo
 	
 	private MerchantSmsSend	merchantSmsSend;
 	
+	private List< String >	channelCodes	= new ArrayList< String >();
+	private int				count;
+	
 	public ParamsVo()
 	{
 		super();
@@ -29,7 +35,7 @@ public class ParamsVo
 	@Override
 	public String toString()
 	{
-		return "ParamsVo [merchantAccount=" + merchantAccount + ", msgId=" + msgId + ", merchantSmsSend=" + merchantSmsSend + "]";
+		return "ParamsVo [merchantAccount=" + merchantAccount + ", msgId=" + msgId + ", merchantSmsSend=" + merchantSmsSend + ", channelCodes=" + channelCodes + ", count=" + count + "]";
 	}
 	
 	/*
@@ -41,6 +47,8 @@ public class ParamsVo
 	{
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ( ( channelCodes == null ) ? 0 : channelCodes.hashCode() );
+		result = prime * result + count;
 		result = prime * result + ( ( merchantAccount == null ) ? 0 : merchantAccount.hashCode() );
 		result = prime * result + ( ( merchantSmsSend == null ) ? 0 : merchantSmsSend.hashCode() );
 		result = prime * result + ( ( msgId == null ) ? 0 : msgId.hashCode() );
@@ -58,6 +66,12 @@ public class ParamsVo
 		if ( obj == null ) return false;
 		if ( getClass() != obj.getClass() ) return false;
 		ParamsVo other = ( ParamsVo ) obj;
+		if ( channelCodes == null )
+		{
+			if ( other.channelCodes != null ) return false;
+		}
+		else if ( !channelCodes.equals( other.channelCodes ) ) return false;
+		if ( count != other.count ) return false;
 		if ( merchantAccount == null )
 		{
 			if ( other.merchantAccount != null ) return false;
@@ -123,4 +137,37 @@ public class ParamsVo
 	{
 		this.merchantSmsSend = merchantSmsSend;
 	}
+	
+	/**
+	 * @return the channelCodes
+	 */
+	public List< String > getChannelCodes()
+	{
+		return channelCodes;
+	}
+	
+	/**
+	 * @param channelCodes the channelCodes to set
+	 */
+	public void setChannelCodes( List< String > channelCodes )
+	{
+		this.channelCodes = channelCodes;
+	}
+	
+	/**
+	 * @return the count
+	 */
+	public int getCount()
+	{
+		return count;
+	}
+	
+	/**
+	 * @param count the count to set
+	 */
+	public void setCount( int count )
+	{
+		this.count = count;
+	}
+	
 }

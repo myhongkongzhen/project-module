@@ -35,21 +35,22 @@ public class SendSmsReqService
 		ParamsVo pv = new ParamsVo();
 		
 		String uid = UUID.randomUUID().toString().replaceAll( "-", "" );
-		pv.setMerchantAccount( uid );
-		pv.setMsgId( String.valueOf( ( long ) ( Math.random() * 10000 ) ) );
+		pv.setMerchantAccount( appKey );
+		pv.setMsgId( data );
 		
 		MerchantSmsSend merchantSmsSend = new MerchantSmsSend();
 		merchantSmsSend.setId( ( long ) ( Math.random() * 10000 ) );
 		merchantSmsSend.setMerchantAccount( pv.getMerchantAccount() );
-		merchantSmsSend.setSmsChannelCode( appKey );
+		merchantSmsSend.setSmsChannelCode( uid );
 		
 		String content = "您的验证码为：" + ( ( long ) ( Math.random() * 10000 ) ) + "。" + data;
 		merchantSmsSend.setSmsContent( content );
 		
 		pv.setMerchantSmsSend( merchantSmsSend );
 		
-		logger.debug( "[{}].", pv.toString() );
+		logger.debug( "--[{}]", pv.toString() );
 		
 		SmsQueueCatch.addData( pv );
 	}
+	
 }
