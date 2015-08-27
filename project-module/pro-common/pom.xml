@@ -17,6 +17,12 @@
 	</properties>
 	<dependencies>
 
+		<!-- http client -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+
 		<!-- JUNIT4 -->
 		<dependency>
 			<groupId>junit</groupId>
