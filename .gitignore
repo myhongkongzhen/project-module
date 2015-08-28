@@ -6,6 +6,8 @@
 **/*.project
 **/*.class
 **/*.swp
+**/HttpClientUtil_Test.java
+**/HttpClientUtilTest.java
 
 Thumbs.db
 ehthumbs.db
