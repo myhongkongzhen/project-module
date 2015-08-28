@@ -62,6 +62,9 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
 					<version>2.3</version>
+					<!-- 是否让子pom继承true or false -->
+					<inherited>true</inherited>
+					<!-- plugin也有很多个目标，每个目标具有不同的配置，executions就是设定plugin的目�? -->
 					<executions>
 						<execution>
 							<phase>package</phase>
