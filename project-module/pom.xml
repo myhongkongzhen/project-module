@@ -53,6 +53,7 @@
 			</dependency>
 
 		</dependencies>
+
 	</dependencyManagement>
 
 	<build>
@@ -62,6 +63,9 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
 					<version>2.3</version>
+					<!-- 是否让子pom继承true or false -->
+					<inherited>true</inherited>
+					<!-- plugin也有很多个目标，每个目标具有不同的配置，executions就是设定plugin的目标 -->
 					<executions>
 						<execution>
 							<phase>package</phase>
@@ -136,24 +140,24 @@
 		</pluginManagement>
 	</build>
 
-	<!-- mvn deploy -->
-	<!-- <distributionManagement> -->
-	<!-- <repository> -->
-	<!-- <id>Releases</id> -->
-	<!-- <name>Nexus Release Repository</name> -->
-	<!-- <url>http://192.168.137.3:8888/nexus/content/repositories/releases/</url> -->
-	<!-- </repository> -->
-	<!-- <snapshotRepository> -->
-	<!-- <id>Snapshots</id> -->
-	<!-- <name>Nexus Snapshot Repository</name> -->
-	<!-- <url>http://192.168.137.3:8888/nexus/content/repositories/snapshots/</url> -->
-	<!-- </snapshotRepository> -->
-	<!-- </distributionManagement> -->
+	<!-- mvn install deploy -->
+	<distributionManagement>
+		<repository>
+			<id>Releases</id>
+			<name>Nexus Release Repository</name>
+			<url>http://localhost:8888/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>Snapshots</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>http://localhost:8888/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<modules>
+		<module>pro-common</module>
 		<module>pro-base-test</module>
 		<module>pro-springmvc-mybatis-test</module>
-		<module>pro-common</module>
 	</modules>
 
 </project>
