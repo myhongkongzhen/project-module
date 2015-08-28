@@ -17,6 +17,13 @@
 	<dependencyManagement>
 		<dependencies>
 
+			<!-- nsq client java -->
+			<dependency>
+				<groupId>com.github.brainlag</groupId>
+				<artifactId>nsq-client</artifactId>
+				<version>1.0.0.BETA</version>
+			</dependency>
+
 			<!-- http client -->
 			<dependency>
 				<groupId>org.apache.httpcomponents</groupId>
